@@ -1,1 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Jurni ❤️</title>
 
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg, #ffb6c9, #ffe6ee, #ffccd9);
+  color: #7a2145;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.card {
+  width: 92%;
+  max-width: 520px;
+  max-height: 94vh;
+  overflow-y: auto;
+  background: rgba(255,255,255,0.93);
+  border-radius: 30px;
+  padding: 30px 25px;
+  text-align: center;
+  box-shadow: 0 15px 45px rgba(120,20,60,0.2);
+}
+
+.gift {
+  font-size: 95px;
+  cursor: pointer;
+  animation: bounce 1.7s infinite;
+}
+
+@keyframes bounce {
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+h1 {
+  font-size: 32px;
+  margin: 10px 0;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+button {
+  border: none;
+  border-radius: 50px;
+  padding: 14px 24px;
+  background: #d92d67;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.letter {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  font-size: 23px;
+  pointer-events: none;
+  animation: float 6s linear forwards;
+}
+
+@keyframes float {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.small {
+  font-size: 13px;
+  opacity: 0.65;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <!-- FIRST SCREEN -->
+  <section id="start">
+
+    <div class="gift" onclick="openGift()">
+      🎁
+    </div>
+
+    <h1>Tap to Open ❤️</h1>
+
+    <p>
+      A little birthday surprise made especially for you, Jurni.
+    </p>
+
+    <button onclick="openGift()">
+      Open My Gift
+    </button>
+
+  </section>
+
+
+  <!-- BIRTHDAY MESSAGE -->
+  <section id="inside" class="hidden">
+
+    <div style="font-size:60px;">
+      💗
+    </div>
+
+    <h1>
+      Happy Birthday, Jurni!
+    </h1>
+
+    <div class="letter">
+
+      <p>
+        Today is a special day because it celebrates someone
+        who has become very special to me.
+      </p>
+
+      <p>
+        I’m grateful for every little moment, every laugh,
+        every conversation, and even the silly and clumsy
+        moments that make you uniquely you.
+      </p>
+
+      <p>
+        I hope this new year of your life brings you genuine
+        happiness, beautiful memories, peaceful days, and
+        people who remind you how much you matter.
+      </p>
+
+      <p>
+        I’m grateful for the way you are — not because you
+        have to be perfect, but because the little things
+        that make you different are part of what makes you
+        special.
+      </p>
+
+      <p>
+        So today, I just want you to smile, enjoy your day,
+        and remember that someone is genuinely grateful
+        that you exist.
+      </p>
+
+      <p style="text-align:center; font-size:22px;">
+        Happy Birthday, Jurni. ❤️
+      </p>
+
+    </div>
+
+    <button onclick="showSurprise()">
+      One More Surprise ✨
+    </button>
+
+    <p id="surprise" class="hidden">
+      <b>
+        No matter where life takes us, I hope you always
+        have reasons to smile. You deserve beautiful things,
+        beautiful moments, and a beautiful year ahead. 💕
+      </b>
+    </p>
+
+    <p class="small">
+      Made especially for you ❤️
+    </p>
+
+  </section>
+
+</div>
+
+
+<script>
+
+function openGift() {
+
+  document.getElementById("start")
+    .classList.add("hidden");
+
+  document.getElementById("inside")
+    .classList.remove("hidden");
+
+  for (let i = 0; i < 18; i++) {
+    setTimeout(makeHeart, i * 120);
+  }
+}
+
+
+function makeHeart() {
+
+  const heart = document.createElement("div");
+
+  heart.className = "heart";
+
+  const symbols = [
+    "❤️",
+    "💗",
+    "💕",
+    "💖",
+    "✨"
+  ];
+
+  heart.textContent =
+    symbols[Math.floor(Math.random() * symbols.length)];
+
+  heart.style.left =
+    Math.random() * 100 + "vw";
+
+  heart.style.animationDuration =
+    (4 + Math.random() * 4) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 8000);
+}
+
+
+function showSurprise() {
+
+  document.getElementById("surprise")
+    .classList.remove("hidden");
+
+  for (let i = 0; i < 15; i++) {
+    setTimeout(makeHeart, i * 100);
+  }
+}
+
+</script>
+
+</body>
+</html>
